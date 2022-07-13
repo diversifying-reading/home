@@ -12,8 +12,16 @@
     
     
     <script>
+      count = 0;
+      
       function change_text(){
-        document.getElementById('test').innerHTML = 'me';
+        count += 1;
+        
+        if (count == 1) {
+          document.getElementById('test').innerHTML = 'me';
+        }
+        else {
+          document.getElementById('test').innerHTML = 'Bucky :)';
       }
     </script>
     
