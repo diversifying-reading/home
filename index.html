@@ -8,21 +8,16 @@
     
     <button type="button" class="block"
             id='test' 
-            onclick='change_text()' style='background-color:#333333;color:#FFFFFF;border-radius:10px'>D1o</button>
+            onclick='change_text()' style='background-color:#333333;color:#FFFFFF;border-radius:10px'>1</button>
     
     
     <script>
       count = 0;
       
       function change_text(){
-        count += 1;
-        
-        if (count == 1) {
-          document.getElementById('test').innerHTML = 'me';
-        }
-        else {
-          document.getElementById('test').innerHTML = 'Bucky :)';
-        }
+
+        document.getElementById('test').innerHTML = count;
+
     </script>
     
   </body>
