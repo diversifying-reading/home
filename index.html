@@ -1,21 +1,6 @@
 <!doctype html>
 <html>
-  <head>
-    
-    <style>
-         .btn {
-            type: block;
-            background-color: yellow;
-            color: black;
-            width: screen.width;
-            text-align: center;
-            font-size: 15px;
-            padding: 20px;
-            border-radius: 15px;
-            border: 3px dashed blue;
-         }
-      </style>
-    
+  <head>    
     <title>Browser Title</title>
   </head>
   
@@ -24,19 +9,15 @@
     <button id='test' 
             onclick='change_text()' style='background-color:#333333;color:#FFFFFF;border-radius:5px'>Hello</button>
     
-    <h2><br>Result</h2>
-    <p>Click below for result:</p>
-    <button class = "btn">Result</button>    
     
     <script>
-      
-      count = 0;
-      
+            
       function change_text(){
-
         document.getElementById('test').innerHTML = 'Goodbye';
-
+      }
+      
     </script>
+    
     
   </body>
 </html>
