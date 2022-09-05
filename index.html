@@ -1,25 +1,202 @@
 <!doctype html>
-<html>
-  <head>    
-    <title>Browser Title</title>
+<html>            
+  <head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style type="text/css">
+
+.sidenav {
+  height: 100vh;
+  width: 20vw;
+  position: fixed;
+  top: 5vh;
+  left: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  padding-top: 20px;
+  border-right: 5px solid #80ab1a;
+}
+
+.sidenav a {
+  color: white;
+  left: 15px;
+}
+
+.sidenav-text{
+  padding-top: 2vh;
+}
+
+.sidenav-text a {
+  left: 15px;
+  position: relative;
+}
+
+.main {
+  font-size: 28px;
+  padding: 10px;
+}
+
+.topnav {
+  position: fixed;
+  background-color: #333;
+  overflow: auto; 
+  top: 0;
+  left: 0;
+  width: 100vw;
+  border-bottom: 5px solid #5e800f;
+}
+
+.topnav a {
+  float: left;
+  margin-left: 1vmin;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 6px 14px;
+  text-decoration: none;
+  font-size: 5vh;
+  vertical-align: middle;
+}
+
+.menu_button_open{
+  float: left;
+  padding-left: 14px;
+  height: 4vh;
+  align-items: center;
+}
+
+.menu_button_open img {
+}
+
+.menu_button_closed{
+  vertical-align: middle;
+  float: left;
+  padding-left: 14px;
+  height: 4vh;
+}
+
+.book_div{
+  border: 1px solid MediumSeaGreen;
+  display: flex;  
+  flex-wrap: wrap;
+}
+
+.book_format{
+  border: 20px solid black;  
+  height: 330px;
+  width: 250px;
+  margin: 10px;
+}
+
+.box_pos{0
+}
+
+    </style>
+    
   </head>
   
-  <body>
-    
-    <button id='test1' 
-            onclick='change_text()' style='background-color:#333333;color:#FFFFFF;border-radius:5px'>Hello</button>
-    <p id='test'> Hello </p>
+  <body>    
 
-    <img src="test_cover.jpeg">    
-    
-    <script>
-            
-      function change_text(){
-        document.getElementById('test').innerHTML = 'Goodbye';
-      }
-      
-    </script>
-    
-    
+<div class="sidenav" id="sidenav" style="width: 20vw;">
+
+	<div class="sidenav-text">
+	  <a>tags and search</a>
+	</div>
+</div>
+
+<div class="topnav" id="topnav">
+  	<div>
+	  <img src='./images/menu_image.png' id="menu_button" class="menu_button_open">
+	</div>
+	<a href='#home'>Home</a>
+</div>
+
+<div class="box_pos" id="book_div_position">
+<div class="book_div" id="book_div">
+
+<div class="book_format" id="book">
+
+</div>
+<div class="book_format" id="book">
+
+</div>
+<div class="book_format" id="book">
+
+</div>
+<div class="book_format" id="book">
+
+</div>
+<div class="book_format" id="book">
+
+</div>
+<div class="book_format" id="book">
+
+</div>
+<div class="book_format" id="book">
+
+</div>
+<div class="book_format" id="book">
+
+</div>
+<div class="book_format" id="book">
+
+</div>
+
+</div>
+</div>
+
+
+<script>
+
+document.getElementById("menu_button").addEventListener("click", switch_menu_state);
+
+function set_book_widths(){
+
+}
+
+function switch_menu_state() {
+if(document.getElementById("sidenav").style.width == "0vw"){
+document.getElementById("sidenav").style.width = "20vw"
+document.getElementById("menu_button").className = "menu_button_open";
+sidenav_padding = 20*window.innerWidth/100 + 5
+}
+else{
+document.getElementById("sidenav").style.width = "0vw"
+document.getElementById("menu_button").className = "menu_button_closed";
+sidenav_padding = 5
+}
+  document.getElementById("book_div_position").style.paddingLeft = parseInt(sidenav_padding) + "px";
+}
+
+function books_per_row(){
+ return 1;
+}
+
+function resize(){
+  sidenav_padding = sidenav.offsetWidth;
+  topnav_padding = topnav.offsetHeight;
+  menu_padding = ((topnav.offsetHeight - 4*window.innerHeight/100)/2)-2.5;
+
+  document.getElementById("book_div_position").style.paddingLeft = parseInt(sidenav_padding) + "px";
+  document.getElementById("book_div_position").style.paddingTop = parseInt(topnav_padding) + "px";
+  document.getElementById("menu_button").style.paddingTop = parseInt(menu_padding) + "px"; 
+}
+
+var sidenav = document.getElementById("sidenav");
+var sidenav_padding = sidenav.offsetWidth;
+
+var topnav = document.getElementById("topnav");
+var topnav_padding = topnav.offsetHeight;
+var menu_padding = ((topnav.offsetHeight - 4*window.innerHeight/100)/2)-2.5;
+
+document.getElementById("book_div_position").style.paddingLeft = parseInt(sidenav_padding) + "px";
+
+document.getElementById("book_div_position").style.paddingTop = parseInt(topnav_padding) + "px";
+
+document.getElementById("menu_button").style.paddingTop = parseInt(menu_padding) + "px";
+
+addEventListener('resize', (event) => {
+  resize();
+});
+
+</script>
   </body>
 </html>
