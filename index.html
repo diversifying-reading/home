@@ -81,14 +81,17 @@
 
 .book_format{
   border: 20px solid black;  
-  height: 330px;
   width: 250px;
+  height: 350px;
   margin: 10px;
 }
 
-.box_pos{0
+.box_pos{
 }
 
+.book_img{
+	width:190px;
+}
     </style>
     
   </head>
@@ -112,31 +115,31 @@
 <div class="box_pos" id="book_div_position">
 <div class="book_div" id="book_div">
 
-<div class="book_format" id="book">
+<div class="book_format" style="width:250px;">
+<img src="./images/Boy,Everywhere,A.M.Dassu.jpeg" class="book_img" id="test">
+</div>
+<div class="book_format">
 
 </div>
-<div class="book_format" id="book">
+<div class="book_format">
 
 </div>
-<div class="book_format" id="book">
+<div class="book_format">
 
 </div>
-<div class="book_format" id="book">
+<div class="book_format">
 
 </div>
-<div class="book_format" id="book">
+<div class="book_format">
 
 </div>
-<div class="book_format" id="book">
+<div class="book_format">
 
 </div>
-<div class="book_format" id="book">
+<div class="book_format">
 
 </div>
-<div class="book_format" id="book">
-
-</div>
-<div class="book_format" id="book">
+<div class="book_format">
 
 </div>
 
@@ -147,10 +150,6 @@
 <script>
 
 document.getElementById("menu_button").addEventListener("click", switch_menu_state);
-
-function set_book_widths(){
-
-}
 
 function switch_menu_state() {
 if(document.getElementById("sidenav").style.width == "0vw"){
@@ -166,18 +165,36 @@ sidenav_padding = 5
   document.getElementById("book_div_position").style.paddingLeft = parseInt(sidenav_padding) + "px";
 }
 
-function books_per_row(){
- return 1;
+function resize(){
+	sidenav_padding = sidenav.offsetWidth;
+	topnav_padding = topnav.offsetHeight;
+	menu_padding = ((topnav.offsetHeight - 4*window.innerHeight/100)/2)-2.5;
+	book_padding = 189 + fit_window(); //250 minus border widths minus margin minus one
+
+	document.getElementById("book_div_position").style.paddingLeft = parseInt(sidenav_padding) + "px";
+	document.getElementById("book_div_position").style.paddingTop = parseInt(topnav_padding) + "px";
+	document.getElementById("menu_button").style.paddingTop = parseInt(menu_padding) + "px";
+
+	document.getElementById("menu_button").style.paddingTop = parseInt(menu_padding) + "px";
+	for(let i=0; i<document.getElementsByClassName("book_format").length; i++){
+		document.getElementsByClassName("book_format")[i].style.width = book_padding + "px";
+		document.getElementsByClassName("book_format")[i].style.height = book_padding*1.54 + "px";
+	}
+	for(let i=0; i<document.getElementsByClassName("book_img").length; i++){
+		document.getElementsByClassName("book_img")[i].style.width = book_padding + "px";
+	}
 }
 
-function resize(){
-  sidenav_padding = sidenav.offsetWidth;
-  topnav_padding = topnav.offsetHeight;
-  menu_padding = ((topnav.offsetHeight - 4*window.innerHeight/100)/2)-2.5;
-
-  document.getElementById("book_div_position").style.paddingLeft = parseInt(sidenav_padding) + "px";
-  document.getElementById("book_div_position").style.paddingTop = parseInt(topnav_padding) + "px";
-  document.getElementById("menu_button").style.paddingTop = parseInt(menu_padding) + "px"; 
+function fit_window(){
+  var extra_width = document.getElementById("book_div").offsetWidth % 250;
+  var additional_book_width = extra_width/Math.floor(document.getElementById("book_div").offsetWidth/250); // extra width divided amongst the number of books
+  var additional_sidebar_width;
+	
+  return additional_book_width;
+  while (additional_book_width > 50) {
+    additional_sidebar_width = additional_book_width - 50;
+    additional_sidebar_width *= Math.floor(document.getElementById("book_div")/250);
+  }
 }
 
 var sidenav = document.getElementById("sidenav");
@@ -193,8 +210,11 @@ document.getElementById("book_div_position").style.paddingTop = parseInt(topnav_
 
 document.getElementById("menu_button").style.paddingTop = parseInt(menu_padding) + "px";
 
+resize();
+
 addEventListener('resize', (event) => {
   resize();
+  resize(); // helps to stay current with resizing
 });
 
 </script>
