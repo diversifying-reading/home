@@ -165,7 +165,15 @@ sidenav_padding = 5
   document.getElementById("book_div_position").style.paddingLeft = parseInt(sidenav_padding) + "px";
 }
 
+function resize_sidenav(){
+	if(sidenav.offsetWidth < 150){
+		document.getElementById("sidenav") = "150px";	
+	}
+}
+	
 function resize(){
+	resize_sidenav();
+	
 	sidenav_padding = sidenav.offsetWidth;
 	topnav_padding = topnav.offsetHeight;
 	menu_padding = ((topnav.offsetHeight - 4*window.innerHeight/100)/2)-2.5;
