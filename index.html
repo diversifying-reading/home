@@ -175,8 +175,6 @@ function resize_sidenav(){
 }
 	
 function resize(){
-	resize_sidenav();
-	
 	sidenav_padding = sidenav.offsetWidth;
 	topnav_padding = topnav.offsetHeight;
 	menu_padding = ((topnav.offsetHeight - 4*window.innerHeight/100)/2)-2.5;
@@ -224,6 +222,7 @@ document.getElementById("menu_button").style.paddingTop = parseInt(menu_padding)
 resize();
 
 addEventListener('resize', (event) => {
+  resize_sidenav();
   resize();
   resize(); // helps to stay current with resizing
 });
