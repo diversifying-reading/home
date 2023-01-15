@@ -5,6 +5,7 @@
 <style type="text/css">
 
 .sidenav_open {
+  width: 20vw;
   height: 100vh;
   position: fixed;
   top: 5vh;
@@ -21,6 +22,7 @@
 }
 	
 .sidenav_closed {
+  width: 0vw;
   height: 100vh;
   position: fixed;
   top: 5vh;
@@ -37,6 +39,7 @@
 }	
 		
 .sidenav_fullScreen {
+  width: 100vw;
   height: 100vh;
   position: fixed;
   top: 5vh;
@@ -186,10 +189,10 @@ function switch_menu_state() {
 	if(document.getElementById("sidenav").className == "sidenav_closed"){
 		document.getElementById("sidenav").className = "sidenav_open"
 		document.getElementById("menu_button").className = "menu_button_open";
-		sidenav_padding = 20*window.innerWidth/100 + 5
+		sidenav_padding = 20*window.innerWidth/100 + 5;
 	}
 	else{
-		document.getElementById("sidenav").className = "sidenav_closed"
+		document.getElementById("sidenav").className = "sidenav_closed";
 		document.getElementById("menu_button").className = "menu_button_closed";
 		sidenav_padding = 5
 	}
