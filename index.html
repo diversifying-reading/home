@@ -221,7 +221,7 @@ function switch_menu_state() {
 }
 
 function resize_sidenav(){
-	if(window.innerWidth < 387){
+	if(window.innerWidth < 387 && document.getElementById("sidenav").className != "sidenav_closed"){
 		document.getElementById("sidenav").className = "sidenav_fullScreen";
 		document.getElementById("sidenav").style.width = "100vw";
 	}
