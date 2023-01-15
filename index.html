@@ -98,7 +98,6 @@
 
 .book_format{
   border: 20px solid black;  
-  width: 210px;
   height: 350px;
   margin: 10px;
 }
@@ -159,7 +158,7 @@ function resize_sequence(){
 
 function switch_menu_state() {
 
-	if(window.innerWidth <= 420){ // set sidenav screen size class
+	if(window.innerWidth <= 414){ // set sidenav screen size class
 		document.getElementById("sidenav").className = "sidenav_smallScreen";
 	}
 	else{
@@ -169,7 +168,7 @@ function switch_menu_state() {
 	if(sidenav_openStatus == 0){ // opening sidenav
 
 		if(document.getElementById("sidenav").className == "sidenav_largeScreen"){
-			sidenav_openStatus = 3; // reset to "untouched"
+			sidenav_openStatus = 2; // reset to "untouched"
 
 			if(window.innerWidth < 700){
 				document.getElementById("sidenav").style.width = "40vw";
@@ -191,7 +190,12 @@ function switch_menu_state() {
 
 	}
 	else if(sidenav_openStatus == 1){ // close sidenav
-		sidenav_openStatus = 0;
+		if(document.getElementById("sidenav").className == "sidenav_smallScreen"){
+			sidenav_openStatus = 2;
+		}
+		else{
+			sidenav_openStatus = 0;
+		}
 		
 		document.getElementById("sidenav").style.width = "0vw";
 		document.getElementById("menu_button").className = "menu_button_closed";
@@ -223,7 +227,7 @@ function switch_menu_state() {
 
 function resize_sidenav(){
 	
-	if(window.innerWidth <= 420){ // set sidenav screen size class
+	if(window.innerWidth <= 414){ // set sidenav screen size class
 		document.getElementById("sidenav").className = "sidenav_smallScreen";
 	}
 	else{
@@ -264,10 +268,20 @@ function resize_topnav(){
 }
 
 function resize_books(){
+	if(window.innerWidth <= 700){
+		book_width_minimum = 200;
+	}
+	else if(window.innerWidth <= 885){
+		book_width_minimum = 250;
+	}
+	else{
+		book_width_minimum = 275;
+	}
+
 	sidenav_padding = sidenav.offsetWidth;
 	topnav_padding = topnav.offsetHeight;
 	menu_padding = 10;
-	book_padding = 149 + fit_window(); //210 minus border widths minus margin minus one
+	book_padding = book_width_minimum - borderWidth*2 - marginWidth*2 - 1 + fit_window(); // book_width_minimum minus border widths minus margin minus one
 
 	document.getElementById("book_div_position").style.paddingLeft = parseInt(sidenav_padding) + "px";
 	document.getElementById("book_div_position").style.paddingTop = parseInt(topnav_padding) + "px";
@@ -284,14 +298,14 @@ function resize_books(){
 }
 
 function fit_window(){
-  var extra_width = document.getElementById("book_div").offsetWidth % 210;
-  var additional_book_width = extra_width/Math.floor(document.getElementById("book_div").offsetWidth/210); // extra width divided amongst the number of books
+  var extra_width = document.getElementById("book_div").offsetWidth % book_width_minimum;
+  var additional_book_width = extra_width/Math.floor(document.getElementById("book_div").offsetWidth/book_width_minimum); // extra width divided amongst the number of books
   var additional_sidebar_width;
 	
   return additional_book_width;
   while (additional_book_width > 50) {
     additional_sidebar_width = additional_book_width - 50;
-    additional_sidebar_width *= Math.floor(document.getElementById("book_div")/210);
+    additional_sidebar_width *= Math.floor(document.getElementById("book_div")/book_width_minimum);
   }
 }
 
@@ -304,7 +318,10 @@ for(let i=0; i<100; i++){
 document.getElementById("book_div").innerHTML = books_html;
 
 
-var sidenav_openStatus; // 0 = closed, 1 = open
+var sidenav_openStatus; // 0 = closed, 1 = open, 2 = untouched;
+var book_width_minimum = 200;
+var borderWidth = 20;
+var marginWidth = 10;
 
 resize_sidenav();
 
