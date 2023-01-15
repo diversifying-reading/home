@@ -4,7 +4,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style type="text/css">
 
-.sidenav {
+.sidenav_open {
   height: 100vh;
   width: 20vw;
   position: fixed;
@@ -16,10 +16,44 @@
   border-right: 5px solid #80ab1a;
 }
 
-.sidenav a {
+.sidenav_open a {
   color: white;
   left: 15px;
 }
+	
+.sidenav_closed {
+  height: 100vh;
+  width: 0vw;
+  position: fixed;
+  top: 5vh;
+  left: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  padding-top: 20px;
+  border-right: 5px solid #80ab1a;
+}
+
+.sidenav_closed a {
+  color: white;
+  left: 15px;
+}	
+		
+.sidenav_fullScreen {
+  height: 100vh;
+  width: 0vw;
+  position: fixed;
+  top: 5vh;
+  left: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  padding-top: 20px;
+  border-right: 5px solid #80ab1a;
+}
+
+.sidenav_fullScreen a {
+  color: white;
+  left: 15px;
+}	
 
 .sidenav-text{
   padding-top: 2vh;
@@ -98,7 +132,7 @@
   
   <body>    
 
-<div class="sidenav" id="sidenav" style="width: 20vw;">
+<div class="sidenav_open" id="sidenav" style="width: 20vw;">
 
 	<div class="sidenav-text">
 	  <a>tags and search</a>
@@ -152,25 +186,25 @@
 document.getElementById("menu_button").addEventListener("click", switch_menu_state);
 
 function switch_menu_state() {
-if(document.getElementById("sidenav").style.width == "0vw"){
-document.getElementById("sidenav").style.width = "20vw"
-document.getElementById("menu_button").className = "menu_button_open";
-sidenav_padding = 20*window.innerWidth/100 + 5
-}
-else{
-document.getElementById("sidenav").style.width = "0vw"
-document.getElementById("menu_button").className = "menu_button_closed";
-sidenav_padding = 5
-}
-  document.getElementById("book_div_position").style.paddingLeft = parseInt(sidenav_padding) + "px";
+	if(document.getElementById("sidenav").className == "sidenav_closed"){
+		document.getElementById("sidenav").className = "sidenav_open"
+		document.getElementById("menu_button").className = "menu_button_open";
+		sidenav_padding = 20*window.innerWidth/100 + 5
+	}
+	else{
+		document.getElementById("sidenav").className = "sidenav_closed"
+		document.getElementById("menu_button").className = "menu_button_closed";
+		sidenav_padding = 5
+	}
+	document.getElementById("book_div_position").style.paddingLeft = parseInt(sidenav_padding) + "px";
 }
 
 function resize_sidenav(){
 	if(document.getElementById("sidenav").offsetWidth < 150 && window.innerWidth/5 < 150){
-		document.getElementById("sidenav").style.width = "0vw";	
+		document.getElementById("sidenav").className = "sidenav_closed";	
 	}
 	else{
-		document.getElementById("sidenav").style.width = "20vw";	
+		document.getElementById("sidenav").className = "sidenav_open";	
 	}
 }
 	
