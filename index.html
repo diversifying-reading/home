@@ -188,7 +188,7 @@ document.getElementById("menu_button").addEventListener("click", switch_menu_sta
 function switch_menu_state() {
 	if(document.getElementById("sidenav").className == "sidenav_closed"){
 		
-		if(window.innerWidth/5 < 150){
+		if(window.innerWidth < 700){
 			document.getElementById("sidenav").className = "sidenav_fullScreen";
 		}
 		else{
@@ -208,7 +208,7 @@ function switch_menu_state() {
 }
 
 function resize_sidenav(){
-	if(window.innerWidth/5 < 150){
+	if(window.innerWidth < 700){
 		if(document.getElementById("sidenav").className != "sidenav_fullScreen"){
 			document.getElementById("sidenav").className = "sidenav_closed";	
 		}
