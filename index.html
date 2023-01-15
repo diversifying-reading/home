@@ -188,11 +188,23 @@ document.getElementById("menu_button").addEventListener("click", switch_menu_sta
 function switch_menu_state() {
 	if(document.getElementById("sidenav").className == "sidenav_closed"){
 		
-		if(window.innerWidth < 700){
+		if(window.innerWidth < 387){
 			document.getElementById("sidenav").className = "sidenav_fullScreen";
+			document.getElementById("sidenav").style.width = "100vw";
 		}
 		else{
 			document.getElementById("sidenav").className = "sidenav_open";
+			
+			if(window.innerWidth < 700){
+				document.getElementById("sidenav").style.width = "40vw";
+			}
+			else if (window.innerWidth < 940){
+				document.getElementById("sidenav").style.width = "30vw";
+			}
+			else{
+				document.getElementById("sidenav").style.width = "20vw";	
+			}
+			
 		}
 		
 		document.getElementById("menu_button").className = "menu_button_open";
@@ -200,6 +212,7 @@ function switch_menu_state() {
 	}
 	else{
 		document.getElementById("sidenav").className = "sidenav_closed";
+		document.getElementById("sidenav").style.width = "0vw";
 		document.getElementById("menu_button").className = "menu_button_closed";
 		sidenav_padding = 5
 	}
@@ -208,13 +221,23 @@ function switch_menu_state() {
 }
 
 function resize_sidenav(){
-	if(window.innerWidth < 700){
-		if(document.getElementById("sidenav").className != "sidenav_fullScreen"){
-			document.getElementById("sidenav").className = "sidenav_closed";	
-		}
+	if(window.innerWidth < 387){
+		document.getElementById("sidenav").className = "sidenav_fullScreen";
+		document.getElementById("sidenav").style.width = "100vw";
 	}
 	else{
-		document.getElementById("sidenav").className = "sidenav_open";	
+		document.getElementById("sidenav").className = "sidenav_open";
+
+		if(window.innerWidth < 700){
+			document.getElementById("sidenav").style.width = "40vw";
+		}
+		else if (window.innerWidth < 940){
+			document.getElementById("sidenav").style.width = "30vw";
+		}
+		else{
+			document.getElementById("sidenav").style.width = "20vw";	
+		}
+
 	}
 }
 	
