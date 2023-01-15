@@ -8,7 +8,7 @@
   width: 20vw;
   height: 100vh;
   position: fixed;
-  top: 5vh;
+  top: 55px;
   left: 0;
   background-color: #111;
   overflow-x: hidden;
@@ -39,7 +39,7 @@
 }	
 	
 .sidenav-text{
-  padding-top: 2vh;
+
 }
 
 .sidenav-text a {
@@ -69,14 +69,13 @@
   text-align: center;
   padding: 6px 14px;
   text-decoration: none;
-  font-size: 5vh;
   vertical-align: middle;
 }
 
 .menu_button_open{
+  height: 4vh;
   float: left;
   padding-left: 14px;
-  height: 4vh;
   align-items: center;
 }
 
@@ -84,16 +83,17 @@
 }
 
 .menu_button_closed{
+  height: 4vh;
   vertical-align: middle;
   float: left;
   padding-left: 14px;
-  height: 4vh;
 }
 
 .book_div{
   border: 1px solid MediumSeaGreen;
   display: flex;  
   flex-wrap: wrap;
+  margin: 0px;
 }
 
 .book_format{
@@ -130,35 +130,8 @@
 </div>
 
 <div class="box_pos" id="book_div_position">
-<div class="book_div" id="book_div">
 
-<div class="book_format">
-<img src="./images/Boy,Everywhere,A.M.Dassu.jpeg" class="book_img" id="test">
-</div>
-<div class="book_format">
-
-</div>
-<div class="book_format">
-
-</div>
-<div class="book_format">
-
-</div>
-<div class="book_format">
-
-</div>
-<div class="book_format">
-
-</div>
-<div class="book_format">
-
-</div>
-<div class="book_format">
-
-</div>
-<div class="book_format">
-
-</div>
+<p class="book_div" id="book_div"></p>
 
 </div>
 </div>
@@ -169,15 +142,16 @@
 document.getElementById("menu_button").addEventListener("click", switch_menu_state);
 
 function resize_sequence(){
-  resize();
+  resize_topnav();
+  resize_books();
   resize_sidenav();
 	
-  setTimeout(() => {  resize(); }, 200); // helps to stay current with resizing: resizes after .2 sec
+  setTimeout(() => {  resize_books(); }, 200); // helps to stay current with resizing: resizes after .2 sec
   resize_sidenav();
 
 	if((parseFloat((document.getElementsByClassName("book_format")[0].style.width))+61)*Math.floor(book_div.offsetWidth/document.getElementsByClassName("book_format")[0].offsetWidth) <= book_div.offsetWidth+0.002){
 		// second check
-	  setTimeout(() => {  resize(); }, 200); // helps to stay current with resizing: resizes after .2 sec
+	  setTimeout(() => {  resize_books(); }, 200); // helps to stay current with resizing: resizes after .2 sec
   resize_sidenav();  
 	}
 
@@ -283,11 +257,16 @@ function resize_sidenav(){
 		}
 	}
 }
-	
-function resize(){
+
+function resize_topnav(){
+	document.getElementById("menu_button").style.height = 30 +"px";
+	document.getElementById("topnav").style.fontSize = 33 +"px";
+}
+
+function resize_books(){
 	sidenav_padding = sidenav.offsetWidth;
 	topnav_padding = topnav.offsetHeight;
-	menu_padding = ((topnav.offsetHeight - 4*window.innerHeight/100)/2)-2.5;
+	menu_padding = 10;
 	book_padding = 149 + fit_window(); //210 minus border widths minus margin minus one
 
 	document.getElementById("book_div_position").style.paddingLeft = parseInt(sidenav_padding) + "px";
@@ -316,6 +295,15 @@ function fit_window(){
   }
 }
 
+var books_html = '<div class="book_format"> <img src="./images/Boy,Everywhere,A.M.Dassu.jpeg" class="book_img" id="test"> </div>';
+
+for(let i=0; i<100; i++){
+	books_html += '<div class="book_format"> </div>';
+}
+
+document.getElementById("book_div").innerHTML = books_html;
+
+
 var sidenav_openStatus; // 0 = closed, 1 = open
 
 resize_sidenav();
@@ -333,7 +321,7 @@ document.getElementById("book_div_position").style.paddingTop = parseInt(topnav_
 
 document.getElementById("menu_button").style.paddingTop = parseInt(menu_padding) + "px";
 
-resize();
+resize_sequence();
 
 addEventListener('resize', (event) => {
   resize_sequence();
