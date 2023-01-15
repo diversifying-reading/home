@@ -209,7 +209,9 @@ function switch_menu_state() {
 
 function resize_sidenav(){
 	if(document.getElementById("sidenav").offsetWidth < 150 && window.innerWidth/5 < 150){
-		document.getElementById("sidenav").className = "sidenav_closed";	
+		if(document.getElementById("sidenav").className != "sidenav_fullScreen"){
+			document.getElementById("sidenav").className = "sidenav_closed";	
+		}
 	}
 	else{
 		document.getElementById("sidenav").className = "sidenav_open";	
