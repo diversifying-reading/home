@@ -187,7 +187,14 @@ document.getElementById("menu_button").addEventListener("click", switch_menu_sta
 
 function switch_menu_state() {
 	if(document.getElementById("sidenav").className == "sidenav_closed"){
-		document.getElementById("sidenav").className = "sidenav_open"
+		
+		if(window.innerWidth/5 < 150){
+			document.getElementById("sidenav").className = "sidenav_fullScreen";
+		}
+		else{
+			document.getElementById("sidenav").className = "sidenav_open";
+		}
+		
 		document.getElementById("menu_button").className = "menu_button_open";
 		sidenav_padding = 20*window.innerWidth/100 + 5;
 	}
@@ -240,6 +247,8 @@ function fit_window(){
     additional_sidebar_width *= Math.floor(document.getElementById("book_div")/250);
   }
 }
+
+resize_sidenav();
 
 var sidenav = document.getElementById("sidenav");
 var sidenav_padding = sidenav.offsetWidth;
