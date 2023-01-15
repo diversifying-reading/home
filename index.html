@@ -170,10 +170,10 @@ function switch_menu_state() {
 		if(document.getElementById("sidenav").className == "sidenav_largeScreen"){
 			sidenav_openStatus = 2; // reset to "untouched"
 
-			if(window.innerWidth < 700){
+			if(window.innerWidth <= 700){
 				document.getElementById("sidenav").style.width = "40vw";
 			}
-			else if (window.innerWidth < 940){
+			else if (window.innerWidth <= 940){
 				document.getElementById("sidenav").style.width = "30vw";
 			}
 			else{
@@ -249,10 +249,10 @@ function resize_sidenav(){
 			document.getElementById("sidenav").style.width = "0vw";
 		}
 		else{ // sidenav was manually opened or not touched
-			if(window.innerWidth < 700){
+			if(window.innerWidth <= 700){
 				document.getElementById("sidenav").style.width = "40vw";
 			}
-			else if (window.innerWidth < 940){
+			else if (window.innerWidth <= 940){
 				document.getElementById("sidenav").style.width = "30vw";
 			}
 			else{
@@ -268,14 +268,11 @@ function resize_topnav(){
 }
 
 function resize_books(){
-	if(window.innerWidth <= 700){
+	if(window.innerWidth <= 750){
 		book_width_minimum = 200;
 	}
-	else if(window.innerWidth <= 885){
-		book_width_minimum = 250;
-	}
 	else{
-		book_width_minimum = 275;
+		book_width_minimum = 250;
 	}
 
 	sidenav_padding = sidenav.offsetWidth;
@@ -311,7 +308,7 @@ function fit_window(){
 
 var books_html = '<div class="book_format"> <img src="./images/Boy,Everywhere,A.M.Dassu.jpeg" class="book_img" id="test"> </div>';
 
-for(let i=0; i<100; i++){
+for(let i=0; i<19; i++){
 	books_html += '<div class="book_format"> </div>';
 }
 
