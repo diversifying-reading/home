@@ -254,11 +254,17 @@ document.getElementById("menu_button").style.paddingTop = parseInt(menu_padding)
 resize();
 
 addEventListener('resize', (event) => {
+  resize();
   resize_sidenav();
-  setTimeout(() => {  resize(); }, 10); // helps to stay current with resizing: resizes after .01 sec
-//   if((parseFloat((document.getElementsByClassName("book_format")[0].style.width))+61)*3 <= book_div.offsetWidth){
-// 	resize();	  
-//   }
+	
+  setTimeout(() => {  resize(); }, 200); // helps to stay current with resizing: resizes after .2 sec
+  resize_sidenav();
+
+	if((parseFloat((document.getElementsByClassName("book_format")[0].style.width))+61)*Math.floor(book_div.offsetWidth/document.getElementsByClassName("book_format")[0].offsetWidth) <= book_div.offsetWidth+0.002){
+		// second check
+	  setTimeout(() => {  resize(); }, 200); // helps to stay current with resizing: resizes after .2 sec
+  resize_sidenav();  
+	}
 });
 
 </script>
