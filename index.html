@@ -166,7 +166,7 @@ sidenav_padding = 5
 }
 
 function resize_sidenav(){
-	if(document.getElementById("sidenav").offsetWidth < 150 || window.innerWidth/5 < 150){
+	if(document.getElementById("sidenav").offsetWidth < 150 && window.innerWidth/5 < 150){
 		document.getElementById("sidenav").style.width = "0vw";	
 	}
 	else{
