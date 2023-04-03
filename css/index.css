@@ -1,0 +1,149 @@
+body{
+  background-color: lightgrey;
+  font-family: tahoma;
+}
+
+p{
+  font-size: 19px;
+  text-align: justify;
+  text-justify: inter-word;
+}
+
+h2{
+  font-size: 27px;
+}
+
+.image {
+    width:42%;
+    height:249px;
+    float: left;
+    font-style: italic;
+    text-align: center;
+    margin: 3px;
+  }
+
+.library{
+    width:100%;
+  }
+
+.topnav {
+  position: fixed;
+  background-color: #033616;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 50px;
+  border-bottom: 5px solid #7fa569;
+}
+
+.topnav_text {
+  margin-left: 1vmin;
+  color: #f2f2f2;
+  text-align: center;
+  padding-left: 14px;
+  text-decoration: none;
+  vertical-align: middle;
+}
+
+.topnav_text_links {
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  background-color: #033616;
+  color: #f2f2f2;
+  text-decoration: none;
+}
+
+.topnav_text_links:hover{
+  background-color: white;
+  color:#033616;
+}
+
+.currentTextLink {
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  background-color: #7DA468;
+  color: #f2f2f2;
+  text-decoration: none;
+}
+
+.currentTextLink:hover{
+  background-color: white;
+  color:#033616;
+}
+
+.select{
+  float: left;
+  padding-left: 0px;
+  height: 100%;
+  font-size: 29px;
+  background-color: #7DA468;
+  padding-left: 10px;
+  padding-right: 1%;
+  color: white;
+  font-family: Tahoma;
+}
+
+footer{
+  background-color: #7DA468;
+  margin-left:5px;
+  margin-right:5px;
+}
+
+hr {
+  border-style: none;
+  border-top-style: dotted;
+  height: 5;
+  border-width: 3.5px;
+  color: #7DA468;
+}
+
+.now{
+  background-color: #7DA468;
+}
+
+.section1{
+  background-color: #7DA468;
+  padding-top: 5px;
+}
+
+.section2{
+  background-color: #033616;
+  color: white;
+  margin-top:15px;
+}
+
+.aboutUsLinks{
+  color: indigo;
+  text-decoration: none;
+}
+
+a{
+  color: darkslateblue;
+}
+
+header{
+  text-align:center;
+  background-color: rgb(188, 212, 174);
+}
+
+aside.maintext {
+  max-width: 2000px;
+}
+
+aside.maintext p {
+  white-space: normal;
+}
+
+div.gallery {
+  margin: 5px;
+  float: left;
+}
+
+div.gallery img {
+  width: 300px;
+  height: 200px;
+}
