@@ -10,7 +10,18 @@ for(let i = 0; i < document.getElementsByClassName("topnav_text").length; i++){
 
 function selectTopnavUpdate(){
   var link = document.getElementsByClassName("select")[0].value;
-  window.location.href = "https://diversifying-reading.github.io/" + link.toLowerCase();
+  if(link == "Catalog"){
+    window.location.href = "https://diversifying-reading.github.io/search";
+  }
+  else if(link == "Resources"){
+    window.location.href = "https://diversifying-reading.github.io/diversifyingreadingslcpl/resources";
+  }
+  else if(link == "Suggest"){
+    window.location.href = "https://diversifying-reading.github.io/diversifyingreadingslcpl/suggest";
+  }
+  else if(link == "Home"){
+    window.location.href = "https://diversifying-reading.github.io/home";
+  }
 }
 
 function resize_topnav(){
