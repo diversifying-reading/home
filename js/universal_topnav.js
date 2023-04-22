@@ -10,6 +10,7 @@ for(let i = 0; i < document.getElementsByClassName("topnav_text").length; i++){
 }
 
 function mobileDevice() {
+
      if (navigator.userAgent.match(/Android/i)
      || navigator.userAgent.match(/webOS/i)
      || navigator.userAgent.match(/iPhone/i)
@@ -65,13 +66,13 @@ function resize_topnav(){
     optionsFormatted += "</option>"
   }
 
-  if(window.innerWidth <= 687 && document.getElementsByClassName("topnav_text")[0].style.height == "" || mobileDevice() && document.getElementsByClassName("topnav_text")[0].style.height){
+  if(window.innerWidth <= 687 && document.getElementsByClassName("topnav_text")[0].style.height == "" || mobileDevice() && document.getElementsByClassName("topnav_text")[0].style.height == ""){
     document.getElementsByClassName("topnav_text")[0].innerHTML = '<select class="select" onchange="selectTopnavUpdate()">' + optionsFormatted + '</select>';
     document.getElementsByClassName("topnav_text")[0].style.height = "100%";
     document.getElementsByClassName("topnav_text")[0].style.width = document.getElementsByClassName("select")[0].offsetWidth+10 + "px";
     document.getElementsByClassName("topnav_text")[0].style.paddingTop = "0px";
     document.getElementsByClassName("topnav_text")[0].style.paddingLeft = "0px";
-    document.getElementsByClassName("topnav_text")[0].style.fontSize = "";
+    document.getElementsByClassName('topnav_text')[0].style.fontSize = "";
     document.getElementsByClassName('topnav_text')[0].style.marginLeft = "0px";
 
     scroll_function();
