@@ -14,7 +14,7 @@ function mobileDevice() {
          }
 }
 
-if(true){
+if(mobileDevice()){
   screenWidth /= 2;
   for(i=0; i<document.getElementsByTagName("p").length; i++){
     document.getElementsByTagName("p")[i].style.fontSize = "38px"
