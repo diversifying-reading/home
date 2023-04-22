@@ -51,7 +51,7 @@ function resize_topnav(){
     document.getElementsByClassName("topnav_text")[0].style.paddingLeft = "14px";
     document.getElementsByClassName("topnav_text")[0].style.width = "";
 
-    document.getElementsByClassName("topnav_text")[0].innerHTML = '\n  <a href="https://diversifying-reading.github.io/diversifying-reading-slcpl" class="topnav_text_links" style="float: left; padding-top: 8px; padding-bottom: 8px;">Home</a>\n  <a href="https://diversifying-reading.github.io/diversifying-reading-slcpl/suggest" class="topnav_text_links" style="float: right; padding-top: 8px; padding-bottom: 8px;">Suggest a Book</a>\n  <a href="https://diversifying-reading.github.io/diversifying-reading-slcpl/resources" class="topnav_text_links" style="float: right; padding-top: 8px; padding-bottom: 8px;">Resources</a>\n  <a href="https://diversifying-reading.github.io/search/" class="topnav_text_links" style="float: right; padding-top: 8px; padding-bottom: 8px;">Catalog</a>\n  ';
+    document.getElementsByClassName("topnav_text")[0].innerHTML = '\n  <a href="https://diversifying-reading.github.io/diversifying-reading-slcpl" class="currentTextLink" style="position:fixed; left:0px; padding-top: 8px; padding-bottom: 8px;">Home</a>\n  <a href="https://diversifying-reading.github.io/diversifying-reading-slcpl/suggest" class="topnav_text_links" style="float: right; padding-top: 8px; padding-bottom: 8px;">Suggest a Book</a>\n  <a href="https://diversifying-reading.github.io/diversifying-reading-slcpl/resources" class="topnav_text_links" style="float: right; padding-top: 8px; padding-bottom: 8px;">Resources</a>\n  <a href="https://diversifying-reading.github.io/search/" class="topnav_text_links" style="float: right; padding-top: 8px; padding-bottom: 8px;">Catalog</a>\n  ';
     document.getElementsByClassName('topnav_text')[0].style.marginLeft = "1vmin";
 
     scroll_function();
@@ -113,32 +113,4 @@ function scroll_function(){
   resize_images();
 }
 
-function currentRepository(url_test){
-  if(url_test.split("/")[3] == "search"){
-    return String("search");
-  }
-  else if(url_test.split("/")[4] == "resources.html"){
-    return String("resources");
-  }
-  else if(url_test.split("/")[4] == "suggest"){
-    return String("suggest");
-  }
-  else if(url_test.split("/")[3] == "diversifying-reading-slcpl"){
-    return String("home");
-  }
-}
-
-let topnav_text_links_index;
-if(currentRepository("https://diversifying-reading.github.io/search/?search=undefined&page=0") == "home"){
-  topnav_text_links_index = 0;
-}
-else if(currentRepository("https://diversifying-reading.github.io/search/?search=undefined&page=0") == "suggest"){
-  topnav_text_links_index = 1;
-}
-else if(currentRepository("https://diversifying-reading.github.io/search/?search=undefined&page=0") == "resources"){
-  topnav_text_links_index = 2;
-}
-else if(currentRepository("https://diversifying-reading.github.io/search/?search=undefined&page=0") == "search"){
-  topnav_text_links_index = 3;
-}
-// document.getElementsByClassName("topnav_text_links")[topnav_text_links_index].className = "currentTextLink";
+document.getElementsByClassName("topnav_text_links")[0].className = "currentTextLink";
