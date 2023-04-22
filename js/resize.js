@@ -16,7 +16,7 @@ function resize_sequence(){
 
 function resize_images(){
     let imgHeight;
-    if(window.innerWidth >= 1105 && screen.width > 687){
+    if(window.innerWidth >= 1105){
       imgHeight = 370.1;
       document.getElementById("BookDiversity").style.height = imgHeight + "px";
       document.getElementById("BookDiversity").style.display = "block";
@@ -24,7 +24,7 @@ function resize_images(){
       document.getElementById("mainbranch").style.display = "block";
       document.getElementById("section2").style.height = (window.innerWidth*22/100 + 10) + "px";
     }
-    else if(window.innerWidth <= 792 || screen.width < 792){
+    else if(window.innerWidth <= 792){
       imgHeight = 0;
       document.getElementById("BookDiversity").style.display = "none";
 
@@ -140,6 +140,8 @@ document.getElementById("body_text").style.paddingTop = 54 - 49 + "px";
 
 // update for universal_topnav after everything is loaded
 document.documentElement.scrollTop = 0;
+
+document.getElementById("text1body").innerHTML = window.innerWidth;
 
 setTimeout(function(){
   document.documentElement.scrollTop = 0;
