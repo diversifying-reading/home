@@ -2,9 +2,6 @@ var window_url = "https://diversifying-reading.github.io/home/?search=undefined"
 var repository = window_url.split("https://diversifying-reading.github.io/")[1].split("/")[0];
 var scrollOnLoad = document.documentElement.scrollTop;
 var screenWidth = window.innerWidth;
-setTimeout(function(){
-  screenWidth = window.innerWidth;
-},100);
 
 for(let i = 0; i < document.getElementsByClassName("topnav_text").length; i++){
   if(document.getElementsByClassName("topnav_text")[i].innerHTML.toUpperCase() == repository.toUpperCase()){
