@@ -109,14 +109,15 @@ function resize_images(){
       section1.style.height = text1.offsetHeight +50 + "px";
     }
     else{
-      section1.style.height = BookDiversity.offsetHeight + "px";
+      section1.style.height = BookDiversity.offsetHeight
+      +5 + "px";
     }
 
     if(text2.offsetHeight +50> mainbranch.offsetHeight){
       section2.style.height = text2.offsetHeight +50 + "px";
     }
     else{
-      section2.style.height = mainbranch.offsetHeight + "px";
+      section2.style.height = mainbranch.offsetHeight+10 + "px";
     }
 
     document.getElementById("body_text").style.height = (section2.offsetTop + section2.offsetHeight) + "px";
