@@ -141,7 +141,7 @@ document.getElementById("body_text").style.paddingTop = 54 - 49 + "px";
 // update for universal_topnav after everything is loaded
 document.documentElement.scrollTop = 0;
 
-document.getElementById("text1body").innerHTML = window.innerWidth;
+document.getElementById("text2body").innerHTML = window.innerWidth;
 
 setTimeout(function(){
   document.documentElement.scrollTop = 0;
