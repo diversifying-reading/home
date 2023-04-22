@@ -1,174 +1,120 @@
-document.documentElement.scrollTop = 0;
-
-function resize_sequence(){
-  scroll_function();
-  resize_topnav();
-  resize_images();
-
-  if(document.documentElement.scrollTop == 0 && screenWidth >= 1390){
-
-    resize_topnav();
-
-    document.getElementById("body_text").style.paddingTop = 54 - 49 + "px";
-
-  }
-}
-
-function resize_images(){
-    let imgHeight;
-    if(screenWidth >= 1105){
-      imgHeight = 370.1;
-      document.getElementById("BookDiversity").style.height = imgHeight + "px";
-      document.getElementById("BookDiversity").style.display = "block";
-
-      document.getElementById("mainbranch").style.display = "block";
-      document.getElementById("section2").style.height = (screenWidth*22/100 + 10) + "px";
-    }
-    else if(screenWidth <= 792){
-      imgHeight = 0;
-      document.getElementById("BookDiversity").style.display = "none";
-
-      document.getElementById("mainbranch").style.display = "none";
-      document.getElementById("section2").style.height = (text2.offsetHeight+30) + "px";
-    }
-    else if(screenWidth <= 990){
-      imgHeight = screenWidth/3
-      document.getElementById("BookDiversity").style.height = imgHeight + "px";
-      document.getElementById("BookDiversity").style.display = "block";
-
-      document.getElementById("mainbranch").style.display = "block";
-      document.getElementById("section2").style.height = (screenWidth*22/100 + 10) + "px";
-    }
-    else if(screenWidth < 1105){
-      imgHeight = 370.1 - (screenWidth - 1135)
-      document.getElementById("BookDiversity").style.height = imgHeight + "px";
-      document.getElementById("BookDiversity").style.display = "block";
-
-      document.getElementById("mainbranch").style.display = "block";
-      document.getElementById("section2").style.height = (screenWidth*22/100 + 10) + "px";
-    }
-
-    let img1Height = document.getElementById("BookDiversity").offsetHeight;
-    let text1Height = document.getElementById("text1").offsetHeight-parseInt(document.getElementById("text1").style.paddingTop);
-    if(document.getElementById("text1").style.paddingTop == ""){
-      text1Height = document.getElementById("text1").offsetHeight;
-    }
-
-    let txtPadding = 0;
-    let imgPadding = 0;
-
-    if(screenWidth > 990){
-      txtPadding += (img1Height-text1Height)/2;
-    }
-    else{
-      imgPadding += document.getElementById("text1Heading").offsetHeight;
-    }
-    document.getElementById("text1").style.paddingTop = (txtPadding-10) + "px";
-    document.getElementById("img1").style.paddingTop = (imgPadding + 0)+"px";
-
-    let section1Padding = parseInt(document.getElementById("pictureHeading").style.top)+parseInt(document.getElementById("pictureHeading").offsetHeight);
-
-    if(img1Height > document.getElementById("text1").offsetHeight){
-      document.getElementById("section1").style.height = (img1Height + 5) + "px";
-    }
-    else{
-      document.getElementById("section1").style.height = (document.getElementById("text1").offsetHeight + 5 + (text1.offsetTop - section1.offsetTop)) + "px";
-    }
-
-    document.getElementById("section1").style.marginTop = (section1Padding-5) + "px";
-
-    if(screenWidth > 1390){
-      document.getElementById("pictureHeading").style.top = "-78px";
-    }
-    else{
-      document.getElementById("pictureHeading").style.top = document.getElementById("topnav").offsetHeight + "px";
-    }
-
-
-    let text2Padding = (section2.offsetHeight - (text2.offsetHeight-parseInt(text2.style.paddingTop)))/2;
-    if(text2.style.paddingTop == ""){
-      text2Padding = (section2.offsetHeight - text2.offsetHeight)/2
-    }
-    if(screenWidth > 792){
-      text2Padding -= 15;
-    }
-    else{
-      text2Padding -= 10;
-    }
-    document.getElementById("text2").style.paddingTop = text2Padding + "px";
-
-    let aboutUsPadding = (document.getElementsByClassName("gallery")[0].offsetHeight - (aboutUs.offsetHeight-parseInt(aboutUs.style.paddingTop)))/2;
-    if(aboutUs.style.paddingTop == ""){
-      aboutUsPadding = (document.getElementsByClassName("gallery")[0].offsetHeight - aboutUs.offsetHeight)/2
-    }
-    if(screenWidth >= 1390){
-      document.getElementById("aboutUs").style.paddingTop = aboutUsPadding + "px";
-    }
-
-    document.getElementById("body_text").style.height = (section2.offsetTop + section2.offsetHeight) + "px";
-}
-
-function fit_window(){
-  var extra_width = document.getElementById("book_div").offsetWidth % book_width_minimum;
-  var additional_book_width = extra_width/Math.floor(document.getElementById("book_div").offsetWidth/book_width_minimum); // extra width divided amongst the number of books
-  var additional_sidebar_width;
-
-  return additional_book_width;
-  while (additional_book_width > 50) {
-    additional_sidebar_width = additional_book_width - 50;
-    additional_sidebar_width *= Math.floor(document.getElementById("book_div")/book_width_minimum);
-  }
-}
-
-if(screenWidth >= 1390){
-  document.getElementById("topnav").style.height = "97px";
-
-  document.getElementById("suggest").style.paddingTop = "17.5px";
-  document.getElementById("suggest").style.paddingBottom = "17.5px";
-
-  document.getElementById("resources").style.paddingTop = "17.5px";
-  document.getElementById("resources").style.paddingBottom = "17.5px";
-
-  document.getElementById("search").style.paddingTop = "17.5px";
-  document.getElementById("search").style.paddingBottom = "17.5px";
-
-  document.getElementById("home").style.paddingTop = "17.5px";
-  document.getElementById("home").style.paddingBottom = "17.5px";
-}
-
-document.getElementById("body_text").style.paddingTop = 54 - 49 + "px";
-
-// update for universal_topnav after everything is loaded
-document.documentElement.scrollTop = 0;
-
-document.getElementById("text2body").innerHTML = screenWidth;
-
+var window_url = "https://diversifying-reading.github.io/home/?search=undefined";
+var repository = window_url.split("https://diversifying-reading.github.io/")[1].split("/")[0];
+var scrollOnLoad = document.documentElement.scrollTop;
+var screenWidth = window.innerWidth;
 setTimeout(function(){
-  document.documentElement.scrollTop = 0;
-  scrollOnLoad = document.documentElement.scrollTop;
+  screenWidth = window.innerWidth;
 },100);
 
-for(let i=0; i<4; i++){
-  resize_sequence();
-  setTimeout(function(){
-    resize_sequence();
-  },100);
+for(let i = 0; i < document.getElementsByClassName("topnav_text").length; i++){
+  if(document.getElementsByClassName("topnav_text")[i].innerHTML.toUpperCase() == repository.toUpperCase()){
+    document.getElementsByClassName("topnav_text")[i].style.backgroundColor = "lightgrey";
+  }
 }
 
-addEventListener('resize', (event) => {
-  for(let i=0; i<4; i++){
-    resize_sequence();
-    setTimeout(function(){
-      resize_sequence();
-    },100);
+function selectTopnavUpdate(){
+  var link = document.getElementsByClassName("select")[0].value;
+  if(link == "Catalog"){
+    window.location.href = "https://diversifying-reading.github.io/search";
   }
-});
+  else if(link == "Resources"){
+    window.location.href = "https://diversifying-reading.github.io/diversifyingreadingslcpl/resources";
+  }
+  else if(link == "Suggest"){
+    window.location.href = "https://diversifying-reading.github.io/diversifyingreadingslcpl/suggest";
+  }
+  else if(link == "Home"){
+    window.location.href = "https://diversifying-reading.github.io/home";
+  }
+}
 
-addEventListener('scroll', (event) => {
-  resize_sequence();
-  setTimeout(function(){
-    resize_sequence();
-  },100);
-});
+function resize_topnav(){
+  let options = ["Home", "Catalog", "Resources", "Suggest a Book"];
 
-resize_topnav();
+  let optionsFormatted = "";
+
+  for(var i=0; i<options.length; i++){
+    optionsFormatted += "<option> ";
+    optionsFormatted += options[i];
+    optionsFormatted += "</option>"
+  }
+
+  if(window.innerWidth <= 687 && document.getElementsByClassName("topnav_text")[0].style.height == ""){
+    document.getElementsByClassName("topnav_text")[0].innerHTML = '<select class="select" onchange="selectTopnavUpdate()">' + optionsFormatted + '</select>';
+    document.getElementsByClassName("topnav_text")[0].style.height = "100%";
+    document.getElementsByClassName("topnav_text")[0].style.width = document.getElementsByClassName("select")[0].offsetWidth+10 + "px";
+    document.getElementsByClassName("topnav_text")[0].style.paddingTop = "0px";
+    document.getElementsByClassName("topnav_text")[0].style.paddingLeft = "0px";
+    document.getElementsByClassName("topnav_text")[0].style.fontSize = "";
+    document.getElementsByClassName('topnav_text')[0].style.marginLeft = "0px";
+
+    scroll_function();
+  }
+  else if(window.innerWidth > 687 && document.getElementsByClassName("select").length > 0){
+    document.getElementsByClassName("topnav_text")[0].style.height = "";
+    document.getElementsByClassName("topnav_text")[0].style.paddingLeft = "14px";
+    document.getElementsByClassName("topnav_text")[0].style.width = "";
+
+    document.getElementsByClassName("topnav_text")[0].innerHTML = '\n  <a href="https://diversifying-reading.github.io/diversifying-reading-slcpl" class="currentTextLink" style="position:fixed; left:0px; padding-top: 8px; padding-bottom: 8px;">Home</a>\n  <a href="https://diversifying-reading.github.io/diversifying-reading-slcpl/suggest" class="topnav_text_links" style="float: right; padding-top: 8px; padding-bottom: 8px;">Suggest a Book</a>\n  <a href="https://diversifying-reading.github.io/diversifying-reading-slcpl/resources" class="topnav_text_links" style="float: right; padding-top: 8px; padding-bottom: 8px;">Resources</a>\n  <a href="https://diversifying-reading.github.io/search/" class="topnav_text_links" style="float: right; padding-top: 8px; padding-bottom: 8px;">Catalog</a>\n  ';
+    document.getElementsByClassName('topnav_text')[0].style.marginLeft = "1vmin";
+
+    scroll_function();
+  }
+  if(window.innerWidth > 687){
+    document.getElementsByClassName("topnav_text")[0].style.fontSize = document.getElementById("topnav").offsetHeight/2 +"px";
+    document.getElementsByClassName("topnav_text")[0].style.fontSize = parseFloat(document.getElementsByClassName("topnav_text")[0].style.fontSize) * document.getElementById("topnav").offsetHeight;
+  }
+
+  if(document.getElementsByClassName("select").length > 0){
+    document.getElementsByClassName("select")[0].style.width = "100vw";
+  }
+}
+
+function scroll_function(){
+  resize_topnav();
+
+  let scrollFromOnLoad;
+  if(document.documentElement.scrollTop >= scrollOnLoad){
+    scrollFromOnLoad = document.documentElement.scrollTop - scrollOnLoad;
+  }
+  else{
+    scrollFromOnLoad = 0;
+    scrollOnLoad = document.documentElement.scrollTop;
+  }
+
+  let topnav_paddingTop = 17.5-(scrollFromOnLoad-30)/30;
+
+  if(topnav_paddingTop < 8){
+    topnav_paddingTop = 8;
+    scrollOnLoad = 0;
+  }
+  else if(topnav_paddingTop > 17.5){
+    topnav_paddingTop = 17.5;
+  }
+
+  if(window.innerWidth <= 1390){
+    topnav_paddingTop = 8;
+  }
+
+  for(i=0; i<document.getElementsByClassName("topnav_text_links").length; i++){
+    document.getElementsByClassName("topnav_text_links")[i].style.paddingTop = topnav_paddingTop + "px";
+    document.getElementsByClassName("topnav_text_links")[i].style.paddingBottom = topnav_paddingTop + "px";
+  }
+
+  if(document.getElementsByClassName("currentTextLink").length > 0){
+    document.getElementsByClassName("currentTextLink")[0].style.paddingTop = topnav_paddingTop + "px";
+    document.getElementsByClassName("currentTextLink")[0].style.paddingBottom = topnav_paddingTop + "px";
+  }
+
+  if(document.getElementsByClassName("topnav_text_links").length > 0){
+    document.getElementById("topnav").style.height = document.getElementsByClassName("topnav_text_links")[0].offsetHeight + "px";
+  }
+  else{
+    document.getElementById("topnav").style.height = "50px";
+  }
+  document.getElementById("body_text").style.paddingTop = 54 - 49 + "px";
+
+  resize_images();
+}
+
+document.getElementsByClassName("topnav_text_links")[0].className = "currentTextLink";
