@@ -1,3 +1,5 @@
+document.documentElement.scrollTop = 0;
+
 function resize_sequence(){
   scroll_function();
   resize_topnav();
@@ -118,25 +120,6 @@ function fit_window(){
   }
 }
 
-// update for universal_topnav after everything is loaded
-setTimeout(function(){
-  scrollOnLoad = document.documentElement.scrollTop;
-},100);
-
-addEventListener('resize', (event) => {
-  resize_sequence();
-  setTimeout(function(){
-    resize_sequence();
-  },100);
-});
-
-addEventListener('scroll', (event) => {
-  resize_sequence();
-  setTimeout(function(){
-    resize_sequence();
-  },100);
-});
-
 if(window.innerWidth >= 1390){
   document.getElementById("topnav").style.height = "97px";
 
@@ -154,5 +137,36 @@ if(window.innerWidth >= 1390){
 }
 
 document.getElementById("body_text").style.paddingTop = 54 - 49 + "px";
+
+// update for universal_topnav after everything is loaded
+document.documentElement.scrollTop = 0;
+
+setTimeout(function(){
+  document.documentElement.scrollTop = 0;
+  scrollOnLoad = document.documentElement.scrollTop;
+},100);
+
+for(let i=0; i<4; i++){
+  resize_sequence();
+  setTimeout(function(){
+    resize_sequence();
+  },100);
+}
+
+addEventListener('resize', (event) => {
+  for(let i=0; i<4; i++){
+    resize_sequence();
+    setTimeout(function(){
+      resize_sequence();
+    },100);
+  }
+});
+
+addEventListener('scroll', (event) => {
+  resize_sequence();
+  setTimeout(function(){
+    resize_sequence();
+  },100);
+});
 
 resize_topnav();
