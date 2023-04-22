@@ -5,7 +5,7 @@ function resize_sequence(){
   resize_topnav();
   resize_images();
 
-  if(document.documentElement.scrollTop == 0 && window.innerWidth >= 1390){
+  if(document.documentElement.scrollTop == 0 && screenWidth >= 1390){
 
     resize_topnav();
 
@@ -16,36 +16,36 @@ function resize_sequence(){
 
 function resize_images(){
     let imgHeight;
-    if(window.innerWidth >= 1105){
+    if(screenWidth >= 1105){
       imgHeight = 370.1;
       document.getElementById("BookDiversity").style.height = imgHeight + "px";
       document.getElementById("BookDiversity").style.display = "block";
 
       document.getElementById("mainbranch").style.display = "block";
-      document.getElementById("section2").style.height = (window.innerWidth*22/100 + 10) + "px";
+      document.getElementById("section2").style.height = (screenWidth*22/100 + 10) + "px";
     }
-    else if(window.innerWidth <= 792){
+    else if(screenWidth <= 792){
       imgHeight = 0;
       document.getElementById("BookDiversity").style.display = "none";
 
       document.getElementById("mainbranch").style.display = "none";
       document.getElementById("section2").style.height = (text2.offsetHeight+30) + "px";
     }
-    else if(window.innerWidth <= 990){
-      imgHeight = window.innerWidth/3
+    else if(screenWidth <= 990){
+      imgHeight = screenWidth/3
       document.getElementById("BookDiversity").style.height = imgHeight + "px";
       document.getElementById("BookDiversity").style.display = "block";
 
       document.getElementById("mainbranch").style.display = "block";
-      document.getElementById("section2").style.height = (window.innerWidth*22/100 + 10) + "px";
+      document.getElementById("section2").style.height = (screenWidth*22/100 + 10) + "px";
     }
-    else if(window.innerWidth < 1105){
-      imgHeight = 370.1 - (window.innerWidth - 1135)
+    else if(screenWidth < 1105){
+      imgHeight = 370.1 - (screenWidth - 1135)
       document.getElementById("BookDiversity").style.height = imgHeight + "px";
       document.getElementById("BookDiversity").style.display = "block";
 
       document.getElementById("mainbranch").style.display = "block";
-      document.getElementById("section2").style.height = (window.innerWidth*22/100 + 10) + "px";
+      document.getElementById("section2").style.height = (screenWidth*22/100 + 10) + "px";
     }
 
     let img1Height = document.getElementById("BookDiversity").offsetHeight;
@@ -57,7 +57,7 @@ function resize_images(){
     let txtPadding = 0;
     let imgPadding = 0;
 
-    if(window.innerWidth > 990){
+    if(screenWidth > 990){
       txtPadding += (img1Height-text1Height)/2;
     }
     else{
@@ -77,7 +77,7 @@ function resize_images(){
 
     document.getElementById("section1").style.marginTop = (section1Padding-5) + "px";
 
-    if(window.innerWidth > 1390){
+    if(screenWidth > 1390){
       document.getElementById("pictureHeading").style.top = "-78px";
     }
     else{
@@ -89,7 +89,7 @@ function resize_images(){
     if(text2.style.paddingTop == ""){
       text2Padding = (section2.offsetHeight - text2.offsetHeight)/2
     }
-    if(window.innerWidth > 792){
+    if(screenWidth > 792){
       text2Padding -= 15;
     }
     else{
@@ -101,7 +101,7 @@ function resize_images(){
     if(aboutUs.style.paddingTop == ""){
       aboutUsPadding = (document.getElementsByClassName("gallery")[0].offsetHeight - aboutUs.offsetHeight)/2
     }
-    if(window.innerWidth >= 1390){
+    if(screenWidth >= 1390){
       document.getElementById("aboutUs").style.paddingTop = aboutUsPadding + "px";
     }
 
@@ -120,7 +120,7 @@ function fit_window(){
   }
 }
 
-if(window.innerWidth >= 1390){
+if(screenWidth >= 1390){
   document.getElementById("topnav").style.height = "97px";
 
   document.getElementById("suggest").style.paddingTop = "17.5px";
@@ -141,7 +141,7 @@ document.getElementById("body_text").style.paddingTop = 54 - 49 + "px";
 // update for universal_topnav after everything is loaded
 document.documentElement.scrollTop = 0;
 
-document.getElementById("text2body").innerHTML = window.innerWidth;
+document.getElementById("text2body").innerHTML = document.body.clientWidth;
 
 setTimeout(function(){
   document.documentElement.scrollTop = 0;
