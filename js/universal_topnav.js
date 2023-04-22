@@ -35,7 +35,7 @@ function resize_topnav(){
     optionsFormatted += "</option>"
   }
 
-  if(window.innerWidth <= 687 && document.getElementsByClassName("topnav_text")[0].style.height == ""){
+  if(window.innerWidth <= 687 && document.getElementsByClassName("topnav_text")[0].style.height == "" || screen.width <= 687 && document.getElementsByClassName("topnav_text")[0].style.height == ""){
     document.getElementsByClassName("topnav_text")[0].innerHTML = '<select class="select" onchange="selectTopnavUpdate()">' + optionsFormatted + '</select>';
     document.getElementsByClassName("topnav_text")[0].style.height = "100%";
     document.getElementsByClassName("topnav_text")[0].style.width = document.getElementsByClassName("select")[0].offsetWidth+10 + "px";
