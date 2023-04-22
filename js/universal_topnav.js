@@ -9,6 +9,35 @@ for(let i = 0; i < document.getElementsByClassName("topnav_text").length; i++){
   }
 }
 
+function mobileDevice() {
+     if (navigator.userAgent.match(/Android/i)
+     || navigator.userAgent.match(/webOS/i)
+     || navigator.userAgent.match(/iPhone/i)
+     || navigator.userAgent.match(/iPad/i)
+     || navigator.userAgent.match(/iPod/i)
+     || navigator.userAgent.match(/BlackBerry/i)
+     || navigator.userAgent.match(/Windows Phone/i)) {
+        return true;
+     } else {
+        return false ;
+     }
+}
+
+if(mobileDevice()){
+  for(i=0; i<document.getElementsByTagName("p").length; i++){
+    document.getElementsByTagName("p")[i].style.fontSize = "38px"
+  }
+  for(i=0; i<document.getElementsByTagName("h2").length; i++){
+    document.getElementsByTagName("h2")[i].style.fontSize = "54px"
+  }
+  for(i=0; i<document.getElementsByTagName("h1").length; i++){
+    document.getElementsByTagName("h1")[i].style.fontSize = "30px"
+  }
+  for(i=0; i<document.getElementsByTagName("h3").length; i++){
+    document.getElementsByTagName("h3")[i].style.fontSize = "20px"
+  }
+}
+
 function selectTopnavUpdate(){
   var link = document.getElementsByClassName("select")[0].value;
   if(link == "Catalog"){
@@ -36,7 +65,7 @@ function resize_topnav(){
     optionsFormatted += "</option>"
   }
 
-  if(window.innerWidth <= 687 && document.getElementsByClassName("topnav_text")[0].style.height == ""){
+  if(window.innerWidth <= 687 && document.getElementsByClassName("topnav_text")[0].style.height == "" || mobileDevice() && document.getElementsByClassName("topnav_text")[0].style.height){
     document.getElementsByClassName("topnav_text")[0].innerHTML = '<select class="select" onchange="selectTopnavUpdate()">' + optionsFormatted + '</select>';
     document.getElementsByClassName("topnav_text")[0].style.height = "100%";
     document.getElementsByClassName("topnav_text")[0].style.width = document.getElementsByClassName("select")[0].offsetWidth+10 + "px";
@@ -47,7 +76,7 @@ function resize_topnav(){
 
     scroll_function();
   }
-  else if(window.innerWidth > 687 && document.getElementsByClassName("select").length > 0){
+  else if(window.innerWidth > 687 && document.getElementsByClassName("select").length > 0 && !mobileDevice()){
     document.getElementsByClassName("topnav_text")[0].style.height = "";
     document.getElementsByClassName("topnav_text")[0].style.paddingLeft = "14px";
     document.getElementsByClassName("topnav_text")[0].style.width = "";
@@ -57,7 +86,7 @@ function resize_topnav(){
 
     scroll_function();
   }
-  if(window.innerWidth > 687){
+  if(window.innerWidth > 687 && !mobileDevice()){
     document.getElementsByClassName("topnav_text")[0].style.fontSize = document.getElementById("topnav").offsetHeight/2 +"px";
     document.getElementsByClassName("topnav_text")[0].style.fontSize = parseFloat(document.getElementsByClassName("topnav_text")[0].style.fontSize) * document.getElementById("topnav").offsetHeight;
   }
