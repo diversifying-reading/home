@@ -1,35 +1,5 @@
 document.documentElement.scrollTop = 0;
 
-function mobileDevice() {
-         if (navigator.userAgent.match(/Android/i)
-         || navigator.userAgent.match(/webOS/i)
-         || navigator.userAgent.match(/iPhone/i)
-         || navigator.userAgent.match(/iPad/i)
-         || navigator.userAgent.match(/iPod/i)
-         || navigator.userAgent.match(/BlackBerry/i)
-         || navigator.userAgent.match(/Windows Phone/i)) {
-            return true;
-         } else {
-            return false ;
-         }
-}
-
-if(mobileDevice()){
-  screenWidth /= 2;
-  for(i=0; i<document.getElementsByTagName("p").length; i++){
-    document.getElementsByTagName("p")[i].style.fontSize = "38px"
-  }
-  for(i=0; i<document.getElementsByTagName("h2").length; i++){
-    document.getElementsByTagName("h2")[i].style.fontSize = "54px"
-  }
-  for(i=0; i<document.getElementsByTagName("h1").length; i++){
-    document.getElementsByTagName("h1")[i].style.fontSize = "30px"
-  }
-  for(i=0; i<document.getElementsByTagName("h3").length; i++){
-    document.getElementsByTagName("h3")[i].style.fontSize = "20px"
-  }
-}
-
 function resize_sequence(){
   scroll_function();
   resize_topnav();
@@ -133,6 +103,20 @@ function resize_images(){
     }
     if(screenWidth >= 1390){
       document.getElementById("aboutUs").style.paddingTop = aboutUsPadding + "px";
+    }
+
+    if(text1.offsetHeight +50> BookDiversity.offsetHeight){
+      section1.style.height = text1.offsetHeight +50 + "px";
+    }
+    else{
+      section1.style.height = BookDiversity.offsetHeight + "px";
+    }
+
+    if(text2.offsetHeight +50> mainbranch.offsetHeight){
+      section2.style.height = text2.offsetHeight +50 + "px";
+    }
+    else{
+      section2.style.height = mainbranch.offsetHeight + "px";
     }
 
     document.getElementById("body_text").style.height = (section2.offsetTop + section2.offsetHeight) + "px";
