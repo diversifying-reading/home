@@ -1,5 +1,35 @@
 document.documentElement.scrollTop = 0;
 
+function mobileDevice() {
+         if (navigator.userAgent.match(/Android/i)
+         || navigator.userAgent.match(/webOS/i)
+         || navigator.userAgent.match(/iPhone/i)
+         || navigator.userAgent.match(/iPad/i)
+         || navigator.userAgent.match(/iPod/i)
+         || navigator.userAgent.match(/BlackBerry/i)
+         || navigator.userAgent.match(/Windows Phone/i)) {
+            return true;
+         } else {
+            return false ;
+         }
+}
+
+if(true){
+  screenWidth /= 2;
+  for(i=0; i<document.getElementsByTagName("p").length; i++){
+    document.getElementsByTagName("p")[i].style.fontSize = "38px"
+  }
+  for(i=0; i<document.getElementsByTagName("h2").length; i++){
+    document.getElementsByTagName("h2")[i].style.fontSize = "54px"
+  }
+  for(i=0; i<document.getElementsByTagName("h1").length; i++){
+    document.getElementsByTagName("h1")[i].style.fontSize = "30px"
+  }
+  for(i=0; i<document.getElementsByTagName("h3").length; i++){
+    document.getElementsByTagName("h3")[i].style.fontSize = "20px"
+  }
+}
+
 function resize_sequence(){
   scroll_function();
   resize_topnav();
@@ -141,8 +171,6 @@ document.getElementById("body_text").style.paddingTop = 54 - 49 + "px";
 // update for universal_topnav after everything is loaded
 document.documentElement.scrollTop = 0;
 
-document.getElementById("text2body").innerHTML = document.body.clientWidth;
-
 setTimeout(function(){
   document.documentElement.scrollTop = 0;
   scrollOnLoad = document.documentElement.scrollTop;
@@ -156,6 +184,7 @@ for(let i=0; i<4; i++){
 }
 
 addEventListener('resize', (event) => {
+  screenWidth = window.innerWidth;
   for(let i=0; i<4; i++){
     resize_sequence();
     setTimeout(function(){
