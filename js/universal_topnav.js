@@ -3,7 +3,12 @@ var repository = window_url.split("https://diversifying-reading.github.io/")[1].
 var scrollOnLoad = document.documentElement.scrollTop;
 var screenWidth = window.innerWidth;
 if(mobileDevice()){
-  screenWidth = screen.width;
+  if(screen.orientation.type == landscape-primary || screen.orientation.type == landscape-secondary){
+    screenWidth = screen.height;
+  }
+  else{
+    screenWidth = screen.width;
+  }
 }
 
 for(let i = 0; i < document.getElementsByClassName("topnav_text").length; i++){
