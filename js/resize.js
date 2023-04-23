@@ -1,5 +1,22 @@
 document.documentElement.scrollTop = 0;
 
+if(mobileDevice()){
+  if(screenWidth <= 687){
+    for(i=0; i<document.getElementsByTagName("p").length; i++){
+      document.getElementsByTagName("p")[i].style.fontSize = "38px"
+    }
+    for(i=0; i<document.getElementsByTagName("h2").length; i++){
+      document.getElementsByTagName("h2")[i].style.fontSize = "54px"
+    }
+    for(i=0; i<document.getElementsByTagName("h1").length; i++){
+      document.getElementsByTagName("h1")[i].style.fontSize = "30px"
+    }
+    for(i=0; i<document.getElementsByTagName("h3").length; i++){
+      document.getElementsByTagName("h3")[i].style.fontSize = "20px"
+    }
+  }
+}
+
 function resize_sequence(){
   scroll_function();
   resize_topnav();
@@ -67,6 +84,7 @@ function resize_images(){
     document.getElementById("img1").style.paddingTop = (imgPadding + 0)+"px";
 
     let section1Padding = parseInt(document.getElementById("pictureHeading").style.top)+parseInt(document.getElementById("pictureHeading").offsetHeight);
+    section1Padding += topnav.offsetHeight - 50;
 
     if(img1Height > document.getElementById("text1").offsetHeight){
       document.getElementById("section1").style.height = (img1Height + 5) + "px";
@@ -106,7 +124,7 @@ function resize_images(){
     }
 
     if(text1.offsetHeight +50> BookDiversity.offsetHeight){
-      section1.style.height = text1.offsetHeight +50 + "px";
+      section1.style.height = text1.offsetHeight +75 + "px";
     }
     else{
       section1.style.height = BookDiversity.offsetHeight
@@ -151,7 +169,7 @@ if(screenWidth >= 1390){
   document.getElementById("home").style.paddingBottom = "17.5px";
 }
 
-document.getElementById("body_text").style.paddingTop = 54 - 49 + "px";
+document.getElementById("body_text").style.paddingTop = 50 - 45 + "px";
 
 // update for universal_topnav after everything is loaded
 document.documentElement.scrollTop = 0;
@@ -170,6 +188,25 @@ for(let i=0; i<4; i++){
 
 addEventListener('resize', (event) => {
   screenWidth = window.innerWidth;
+
+  if(mobileDevice()){
+    screenWidth = screen.width;
+    if(screenWidth <= 687){
+      for(i=0; i<document.getElementsByTagName("p").length; i++){
+        document.getElementsByTagName("p")[i].style.fontSize = "38px"
+      }
+      for(i=0; i<document.getElementsByTagName("h2").length; i++){
+        document.getElementsByTagName("h2")[i].style.fontSize = "54px"
+      }
+      for(i=0; i<document.getElementsByTagName("h1").length; i++){
+        document.getElementsByTagName("h1")[i].style.fontSize = "30px"
+      }
+      for(i=0; i<document.getElementsByTagName("h3").length; i++){
+        document.getElementsByTagName("h3")[i].style.fontSize = "20px"
+      }
+    }
+  }
+
   for(let i=0; i<4; i++){
     resize_sequence();
     setTimeout(function(){
