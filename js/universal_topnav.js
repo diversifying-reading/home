@@ -185,13 +185,20 @@ function scroll_function(){
       document.getElementById("diversifying-reading-topnav").style.display = "none";
     }
   }
-  if(true){
-    if(document.getElementById("diversifying-reading-topnav").style.display == "none"){
+  if(document.getElementById("diversifying-reading-topnav") != undefined && document.getElementById("diversifying-reading-topnav").style.display == "none"){
+    if(document.getElementById("topnav_logo") != undefined){
       document.getElementById("topnav_logo").style.paddingLeft = parseInt(document.getElementById("home").offsetWidth) + "px";
+    }
+
+    if(document.getElementById("diversifying-reading-topnav") != undefined){
       document.getElementById("diversifying-reading-topnav").style.paddingLeft = "0px";
     }
-    else{
+  }
+  else{
+    if(document.getElementById("diversifying-reading-topnav") != undefined){
       document.getElementById("diversifying-reading-topnav").style.paddingLeft = parseInt(document.getElementById("home").offsetWidth) + "px";
+    }
+    if(document.getElementById("topnav_logo") != undefined){
       document.getElementById("topnav_logo").style.paddingLeft = "0px";
     }
   }
